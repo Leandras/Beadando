@@ -1,0 +1,47 @@
+{{#each messages}}
+<div class="alert alert-dismissible alert-success">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    {{this}}
+</div>
+{{/each}}
+
+<div class="page-header">
+    <h1>Bejelentett munkák</h1>
+</div>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th><h3>Város</h3></th>
+            <th><h3>Típus</h3></th>
+            <th><h3>Leírás</h3></th>
+            <th><h3>Órabér</h3></th>
+            <th><h3>Dátum</h3></th> 
+            <th><h3>Státusz</h3></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each munkak}}
+        <tr>
+            <td><h5>{{varos}}</h5></td>
+            <td><h5>{{tipus}}</h5></td>
+            <td><h5>{{leiras}}</h5></td>
+            <td><h5>{{oraber}}</h5></td>
+            <td><h5>{{date}}</h5></td>
+            <td><h4><span for="status" class="label label-{{statusClass}}">{{statusText}}</span></h4></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<form>
+    {{#if user.isMunkaado}}
+        <div class="form-group" >
+            <a href="/munkak/felvesz" class="btn btn-default" role="button" active>Új munka felvétele</a>
+        </div>
+    {{else}}
+        <div class="form-group">
+            <a href="/munkak/munkalista" class="btn btn-default" role="button" disabled>Új munka felvétele</a>
+        </div>
+    {{/if}}
+</form>    

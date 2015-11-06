@@ -1,0 +1,104 @@
+{
+  "data": {
+    "munka": [],
+    "user": []
+  },
+  "schema": {
+    "munka": {
+      "azonosito": {
+        "type": "string",
+        "unique": true
+      },
+      "varos": {
+        "type": "string"
+      },
+      "tipus": {
+        "type": "string"
+      },
+      "date": {
+        "type": "datetime"
+      },
+      "leiras": {
+        "type": "string"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "free",
+          "taken",
+          "pending"
+        ]
+      },
+      "oraber": {
+        "type": "string"
+      },
+      "user": {
+        "type": "integer",
+        "model": "user",
+        "foreignKey": true,
+        "alias": "user"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "user": {
+      "azon": {
+        "type": "string",
+        "unique": true
+      },
+      "password": {
+        "type": "string"
+      },
+      "vezeteknev": {
+        "type": "string"
+      },
+      "keresztnev": {
+        "type": "string"
+      },
+      "ceg": {
+        "type": "string"
+      },
+      "varos": {
+        "type": "string"
+      },
+      "isMunkaado": {
+        "type": "boolean",
+        "defaultsTo": "false"
+      },
+      "engedely": {
+        "type": "string",
+        "enum": [
+          "munkaado",
+          "munkavallalo"
+        ],
+        "defaultsTo": "munkavallalo"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    }
+  },
+  "counters": {
+    "munka": {},
+    "user": {}
+  }
+}
