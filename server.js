@@ -21,6 +21,7 @@ orm.loadCollection(Waterline.Collection.extend(userCollection));
 var munkakController = require("./controllers/munka");
 var indexController = require("./controllers/index");
 var loginController = require("./controllers/login");
+var szerkController = require("./controllers/szerk");
 var app = express();
 
 //config
@@ -33,7 +34,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
 app.use(session({
     cookie: { maxAge: 60000 },
-    secret: 'titkos szoveg',  //Ezt kivenni?!?!?!?!?!
+    secret: 'titkos szoveg',  //Ez "védi" a session
     resave: false,
     saveUninitialized: false,
 }));
@@ -49,6 +50,7 @@ passport.deserializeUser(function(obj, done){
 });
 
 var LocalStrategy = require('passport-local').Strategy;
+
 
 //Munka vállaló regisztráció
 passport.use('local-signupemp', new LocalStrategy({
@@ -123,11 +125,16 @@ passport.use('local', new LocalStrategy({
             if (!user || !user.validPassword(password)) {
                 return done(null, false, { message: 'Hibás adatokat adott meg!' });
             }
+            req.session.user = user;
             return done(null, user);
         });
     }
 ));
 
+//Jelenlegi felhasználó lekérdezése
+function getCurrentUser(req, res){
+    res.send(req.user.azon);
+}
 
 function setLocalsForLayout() {
     return function (req, res, next) {
@@ -149,7 +156,7 @@ function andRestrictTo(engedely) {
         if (req.user.engedely == engedely) {
             return next();
         } else {
-           next(new Error('Csak munka adó szerkesztheti.'));
+           res.redirect('/munkak/munkalista');
         }
     }
 }
@@ -159,6 +166,7 @@ function andRestrictTo(engedely) {
 app.use('/', indexController);
 app.use('/munkak',ensureAuthenticated, munkakController);
 app.use('/login', loginController);
+app.use('/munkak_ado',andRestrictTo('munkaado'), szerkController);
 
 
 app.get('/logout', function(req, res){

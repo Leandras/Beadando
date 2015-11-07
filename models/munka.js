@@ -39,7 +39,9 @@ module.exports = {
             required : true,
         },
         user : {
-            model : 'user',
+            type : 'string',
+            //model : 'user',
+            required    :   true,
         },
     }
 };

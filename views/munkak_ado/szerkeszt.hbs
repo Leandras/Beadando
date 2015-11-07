@@ -1,0 +1,26 @@
+
+{{#each munkak}}
+    <form class="gorm group" method="post">
+        <fieldset>
+            <div class="form group">
+                    <input class="form-control" id="varos" name="varos" placeholder="{{varos}}" type="text" value="{{data.oraber}}">
+            </div>
+             <div class="form group">
+                    <input class="form-control" id="varos" name="varos" placeholder="{{tipus}}" type="text" value="{{data.oraber}}">
+            </div>
+             <div class="form group">
+                    <input class="form-control" id="varos" name="varos" placeholder="{{leiras}}" type="text" value="{{data.oraber}}">
+            </div>
+             <div class="form group">
+                    <input class="form-control" id="varos" name="varos" placeholder="{{oraber}}" type="text" value="{{data.oraber}}">
+            </div>
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <a href="../munkak/munkalista" class="btn btn-default" role="button">Visszalépés</a>
+                    <button type="submit" class="btn btn-primary">Küldés</button>
+                    <button type="submit" class="btn btn-danger">Törlés</button>
+                </div>
+        </div>
+        </fieldset>
+    </form>
+{{/each}}

@@ -7,6 +7,7 @@
     "body-parser": "^1.14.1",
     "connect-flash": "^0.1.1",
     "express": "^4.13.3",
+    "express-dynamic-helpers-patch": "0.0.2",
     "express-session": "^1.11.3",
     "express-validator": "^2.17.1",
     "hbs": "^3.1.1"
