@@ -1,26 +1,76 @@
+{{#each errorMessages}}
+<div class="alert alert-dismissible alert-danger">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    {{this}}
+</div>
+{{/each}}
 
-{{#each munkak}}
-    <form class="gorm group" method="post">
-        <fieldset>
-            <div class="form group">
-                    <input class="form-control" id="varos" name="varos" placeholder="{{varos}}" type="text" value="{{data.oraber}}">
+<div class="page-header">
+    <h1>Munka szerkesztése</h1>
+</div>
+
+{{#each munka}}
+
+<form class="form-horizontal" method="post">
+    <fieldset>
+        <div class="form-group
+            {{#if validationErrors.varos}}
+                has-error
+            {{/if}}
+        ">
+            <label for="varos" class="col-lg-2 control-label">Város</label>
+            <div class="col-lg-10">
+                <input class="form-control" id="varos" name="varos" placeholder="{{varos}}" type="text" value="{{data.varos}}">
+                {{#if validationErrors.varos}}
+                    <span class="help-block">{{validationErrors.varos.msg}}</span>
+                {{/if}}
             </div>
-             <div class="form group">
-                    <input class="form-control" id="varos" name="varos" placeholder="{{tipus}}" type="text" value="{{data.oraber}}">
-            </div>
-             <div class="form group">
-                    <input class="form-control" id="varos" name="varos" placeholder="{{leiras}}" type="text" value="{{data.oraber}}">
-            </div>
-             <div class="form group">
-                    <input class="form-control" id="varos" name="varos" placeholder="{{oraber}}" type="text" value="{{data.oraber}}">
-            </div>
-            <div class="form-group">
-                <div class="col-lg-10 col-lg-offset-2">
-                    <a href="../munkak/munkalista" class="btn btn-default" role="button">Visszalépés</a>
-                    <button type="submit" class="btn btn-primary">Küldés</button>
-                    <button type="submit" class="btn btn-danger">Törlés</button>
-                </div>
         </div>
-        </fieldset>
-    </form>
+         <div class="form-group
+            {{#if validationErrors.tipus}}
+                has-error
+            {{/if}}
+        ">
+            <label for="tipus" class="col-lg-2 control-label">Típus</label>
+            <div class="col-lg-10">
+                <input class="form-control" id="tipus" name="tipus" placeholder="{{tipus}}" type="text" value="{{data.tipus}}">
+                {{#if validationErrors.tipus}}
+                    <span class="help-block">{{validationErrors.tipus.msg}}</span>
+                {{/if}}
+            </div>
+        </div>
+        <div class="form-group
+            {{#if validationErrors.leiras}}
+                has-error
+            {{/if}}
+        ">
+            <label for="leiras" class="col-lg-2 control-label">Leírás</label>
+            <div class="col-lg-10">
+                <textarea class="form-control" rows="3" id="leiras" name="leiras" placeholder="{{leiras}}" type="text" value="{{data.leiras}}"></textarea>
+                {{#if validationErrors.leiras}}
+                    <span class="help-block">{{validationErrors.leiras.msg}}</span>
+                {{/if}}
+            </div>
+        </div>
+         <div class="form-group
+            {{#if validationErrors.oraber}}
+                has-error
+            {{/if}}
+        ">
+            <label for="oraber" class="col-lg-2 control-label">Órabér</label>
+            <div class="col-lg-10">
+                <input class="form-control" id="oraber" name="oraber" placeholder="{{oraber}}" type="text" value="{{data.oraber}}">
+                {{#if validationErrors.oraber}}
+                    <span class="help-block">{{validationErrors.oraber.msg}}</span>
+                {{/if}}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <a href="/munkak/munkalista" class="btn btn-default" role="button">Visszalépés</a>
+                <button type="submit" class="btn btn-primary">Küldés</button>
+            </div>
+        </div>
+    </fieldset>
+</form>  
 {{/each}}

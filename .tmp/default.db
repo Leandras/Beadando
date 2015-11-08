@@ -31,7 +31,7 @@
         "leiras": "próba",
         "tipus": "fizikai",
         "oraber": "550",
-        "user": "function router(req, res, next) {\n    router.handle(req, res, next);\n  }",
+        "user": null,
         "azonosito": "90",
         "date": "2015-11-07T16:12:08.945Z",
         "createdAt": "2015-11-07T16:12:08.946Z",
@@ -50,6 +50,32 @@
         "createdAt": "2015-11-07T17:59:50.958Z",
         "updatedAt": "2015-11-07T17:59:50.958Z",
         "id": 4
+      },
+      {
+        "status": "free",
+        "varos": "asd",
+        "leiras": "asd",
+        "tipus": "asd",
+        "oraber": "5",
+        "user": "2",
+        "azonosito": "54",
+        "date": "2015-11-07T19:46:02.065Z",
+        "createdAt": "2015-11-07T19:46:02.068Z",
+        "updatedAt": "2015-11-07T19:46:02.068Z",
+        "id": 5
+      },
+      {
+        "status": "free",
+        "varos": "Szeged",
+        "leiras": "3. felh",
+        "tipus": "fiziaki",
+        "oraber": "60",
+        "user": "3",
+        "azonosito": "109",
+        "date": "2015-11-07T20:45:24.349Z",
+        "createdAt": "2015-11-07T20:45:24.356Z",
+        "updatedAt": "2015-11-07T20:45:24.356Z",
+        "id": 6
       }
     ],
     "user": [
@@ -96,6 +122,39 @@
         "createdAt": "2015-11-07T14:26:42.184Z",
         "updatedAt": "2015-11-07T14:26:42.184Z",
         "id": 4
+      },
+      {
+        "azon": "4",
+        "password": "$2a$10$CHexcP3/T418BwjPzwqAyOZyWSGttUdZ.gSUB9wu5AW/apf6jqOx.",
+        "vezeteknev": "4",
+        "keresztnev": "4",
+        "engedely": "munkaado",
+        "isMunkaado": true,
+        "createdAt": "2015-11-07T19:27:41.057Z",
+        "updatedAt": "2015-11-07T19:27:41.057Z",
+        "id": 5
+      },
+      {
+        "azon": "33",
+        "password": "$2a$10$YpaUZa8uhakPDoFqKcrlo.c985muxFxZkiPB4EcPIstsE2m2V.kii",
+        "vezeteknev": "33",
+        "keresztnev": "33",
+        "engedely": "munkaado",
+        "isMunkaado": true,
+        "createdAt": "2015-11-07T19:28:13.920Z",
+        "updatedAt": "2015-11-07T19:28:13.920Z",
+        "id": 6
+      },
+      {
+        "azon": "9",
+        "password": "$2a$10$G4uxJCQ60N3IkeUvWdPgqeVQtoMlB5RCrIxeZ/SjEVL91SFhShoem",
+        "vezeteknev": "99",
+        "keresztnev": "9",
+        "engedely": "munkaado",
+        "isMunkaado": true,
+        "createdAt": "2015-11-07T20:49:44.311Z",
+        "updatedAt": "2015-11-07T20:49:44.311Z",
+        "id": 7
       }
     ]
   },
@@ -103,6 +162,7 @@
     "munka": {
       "azonosito": {
         "type": "string",
+        "primaryKey": true,
         "unique": true
       },
       "varos": {
@@ -131,12 +191,6 @@
       "user": {
         "type": "string"
       },
-      "id": {
-        "type": "integer",
-        "autoIncrement": true,
-        "primaryKey": true,
-        "unique": true
-      },
       "createdAt": {
         "type": "datetime"
       },
@@ -147,7 +201,8 @@
     "user": {
       "azon": {
         "type": "string",
-        "unique": true
+        "unique": true,
+        "primaryKey": true
       },
       "password": {
         "type": "string"
@@ -176,12 +231,6 @@
         ],
         "defaultsTo": "munkavallalo"
       },
-      "id": {
-        "type": "integer",
-        "autoIncrement": true,
-        "primaryKey": true,
-        "unique": true
-      },
       "createdAt": {
         "type": "datetime"
       },
@@ -192,10 +241,10 @@
   },
   "counters": {
     "munka": {
-      "id": 4
+      "id": 6
     },
     "user": {
-      "id": 4
+      "id": 7
     }
   }
 }

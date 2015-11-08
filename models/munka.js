@@ -7,6 +7,7 @@ module.exports = {
             defaultsTo : function (){
                 return Math.floor((Math.random() * 100) + 10);
             },
+            primaryKey : true,
             required : 'true',
             unique : true,
         },

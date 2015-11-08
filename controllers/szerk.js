@@ -2,6 +2,8 @@ var express = require("express");
 var router = express.Router();
 var Waterline = require("waterline");
 var session = require("express-session");
+var hbs = require('hbs');
+
 
 
 //Munka felvétele
@@ -50,33 +52,80 @@ router.post('/felvesz', function (req, res) {
     }
 });
 
-//Szerkesztés
 
 router.get('/szerkeszt', function(req, res) {
-     req.app.models.munka.find().then(function (munkak) {
-        //console.log(munkak); //munkak kiirasa konzolra, törölhető
-        console.log("szerkeszt get");
-        res.render('munkak_ado/szerkeszt', {
-            munkak : munkak,
+   req.app.models.munka.find().where({ user  :   req.session.user.azon }).then(function (munka) {
+       if(munka.length == 0){
+           req.flash('info', 'Még nem vett fel munkát.')
+           res.redirect('../munkak/munkalista');
+       }
+       else{
+            res.render('munkak_ado/szerkeszt', {
+            munka : munka,
             messages : req.flash('info'),
+            });
+        }
+            
+        
         });
+        
     });
-});
 
 router.post('/szerkeszt', function(req, res) {
-    console.log("szerkeszt post");
+  
+    req.checkBody('varos', 'Hibás város').notEmpty().withMessage('Kötelező megadni!');
+    req.sanitizeBody('leiras').escape();
+    req.checkBody('leiras', 'Hibás leírás').notEmpty().withMessage('Kötelező megadni!');
+    req.checkBody('oraber').notEmpty().isInt().withMessage('Kötelező megadni!');
+    req.checkBody('tipus').notEmpty().withMessage('Kötelező megadni!');
+    
     var validationErrors = req.validationErrors(true);
     if(validationErrors){
+        console.log("Validation error")
         req.flash('validationErrors', validationErrors);
         req.flash('data', req.body);
-        res.redirect('/munkak_ado/felvesz');
+        res.redirect('/munkak_ado/szerkeszt');
     }else{
-        delete req.app.models.munkak;
-        res.redirect('/munkak/munkalista');    
+        req.app.models.munka.update({
+            status  : 'free',
+            varos   : req.app.models.munka.varos,
+            leiras  : req.app.models.munka.leiras,
+            tipus   : req.app.models.munka.tipus,
+            oraber  : req.app.models.munka.oraber,
+            },
+            {
+            status  : 'taken',
+            varos   : req.body.varos,
+            leiras  : req.body.leiras,
+            tipus   : req.body.tipus,
+            oraber  : req.body.oraber,
+            }
+        ).then(function (error, updated) {
+            req.flash('info', 'Munka sikeresen módosítva!');
+            res.redirect('/munkak/munkalista');
+        })
+        .catch(function (err, done) {
+                return done(null, false, {
+                    message :   err.details
+                });
+            })
     }
     
 });
 
+router.delete('/szerkeszt', function(req, res) {
+    console.log("törlés")
+})
 
+//functions
+function functionKEtto(id){
+    console.log("Id test:" + id);
+}
+
+
+//handlebar saját
+hbs.registerHelper('getId', function(obj) {
+    console.log(obj.id)
+})
 
 module.exports = router;

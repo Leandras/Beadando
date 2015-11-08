@@ -1,3 +1,4 @@
+<script src="../controllers/szerk.js"></script>
 {{#each messages}}
 <div class="alert alert-dismissible alert-success">
     <button type="button" class="close" data-dismiss="alert">×</button>
@@ -5,14 +6,16 @@
 </div>
 {{/each}}
 
+
+
 <div class="page-header">
     <h1>Bejelentett munkák</h1>
 </div>
-
+<form role="form" class="form-group" method="get">
 <table class="table table-hover">
     <thead>
         <tr>
-            <th><h3>Id</h3></th>
+            <th><h3>Azonosító</h3></th>
             <th><h3>User</h3></th>
             <th><h3>Dátum</h3></th>
             <th><h3>Típus</h3></th>
@@ -25,7 +28,7 @@
     <tbody>
         {{#each munkak}}
         <tr>
-            <td><h5>{{id}}</h5></td>
+            <td><h5>{{azonosito}}</h5></td>
             <td><h5>{{user}}</h5></td>
             <td><h5>{{date}}</h5></td>
             <td><h5>{{tipus}}</h5></td>
@@ -33,10 +36,19 @@
             <td><h5>{{oraber}}</h5></td>
             <td><h5>{{varos}}</h5></td>
             <td><h4><span for="status" class="label label-{{statusClass}}">{{statusText}}</span></h4></td>
+            <td><h4><button type="button" href="../munkak_ado/szerkeszt" class="btn btn-default" value="{{azonosito}}" id="{{id}}" onClick="{{getId this}}" active>Szerkesztés</h5></td>
+            <td><h4><a href="#" class="btn btn-default" role="button" id="torles" active>Törlés</a></h5></td>
         </tr>
         {{/each}}
     </tbody>
 </table>
-
+</form>
 <a href="../munkak_ado/felvesz" class="btn btn-default" role="button" active>Új munka felvétele</a>
-<a href="../munkak_ado/szerkeszt" class="btn btn-default" role="button" active>Munka szerkesztése</a>
+
+
+
+<script type="text/javascript">
+    function myFunction(elt){
+      alert(elt.id)
+    }
+</script>

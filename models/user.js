@@ -8,6 +8,7 @@ module.exports = {
             type : 'string',
             required : true,
             unique : true,
+            primaryKey : true,
         },
         password : {
             type : 'string',

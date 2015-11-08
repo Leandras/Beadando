@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var passport = require("passport");
+var session = require("express-session");
 
 //ViewModel
 var statusText = {
@@ -24,10 +24,12 @@ function decorateMunkak(munkaContainer){
     });
 }
 
+
+
 //Munkák lista
 router.get('/munkalista', function (req, res){
      req.app.models.munka.find().then(function (munkak) {
-        //console.log(munkak); //munkak kiirasa konzolra, törölhető
+        req.session.munkak = munkak;
         res.render('munkak/munkalista', {
             munkak : decorateMunkak(munkak),
             messages : req.flash('info'),

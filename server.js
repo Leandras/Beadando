@@ -5,6 +5,18 @@ var session = require("express-session");
 var flash = require("connect-flash");
 var passport = require("passport");
 
+//Handlebar custom helper
+var hbs = require('hbs');
+hbs.registerHelper('equal', function(lvalue, rvalue, options) {
+    if (arguments.length < 3)
+        throw new Error("Handlebars Helper equal needs 2 parameters");
+    if( lvalue!=rvalue ) {
+        return options.inverse(this);
+    } else {
+        return options.fn(this);
+    }
+});
+
 
 //ORM modul
 var Waterline = require("waterline");
@@ -99,7 +111,7 @@ passport.use('local-signup', new LocalStrategy({
                 vezeteknev: req.body.vezeteknev,
                 keresztnev: req.body.keresztnev,
                 engedely  : 'munkaado',
-                isMunkaado: 'true',
+                isMunkaado: true,
                 }).then(function(user) {
                 return done(null, user);
             })
@@ -190,7 +202,5 @@ orm.initialize(waterlineConfig, function(err, models) {
     
     console.log("ORM is started.");
 });
-
-
 
 
