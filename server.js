@@ -188,15 +188,10 @@ app.get('/logout', function(req, res){
 });
 
 
-//function
-
-function klikk(){
-    console.log(klikk);
-}
 
 //ORM indítása
 orm.initialize(waterlineConfig, function(err, models) {
-    if(err) throw err;         
+    if(err) {throw err; }        
     
     app.models = models.collections;
     //app.connections = models.connections;
