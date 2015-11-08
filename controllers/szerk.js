@@ -4,8 +4,6 @@ var Waterline = require("waterline");
 var session = require("express-session");
 var hbs = require('hbs');
 
-
-
 //Munka felvétele
 router.get('/felvesz', function(req, res) {
     console.log("User felvesztbe: " + req.session.user.azon) //ÍGY MŰKÖDIK
@@ -34,27 +32,36 @@ router.post('/felvesz', function (req, res) {
         res.redirect('/munkak_ado/felvesz');
     }
     else {
-        req.app.models.munka.create({
-            status  : 'free',
-            varos   : req.body.varos,
-            leiras  : req.body.leiras,
-            tipus   : req.body.tipus,
-            oraber  : req.body.oraber,
-            user    : req.session.user.azon,
-        })
-        .then(function (error) {
-            req.flash('info', 'Munka sikeresen felvéve!');
-            res.redirect('/munkak/munkalista');
-        })
-        .catch(function (err) {
-            console.log(err);
-        });
+        req.app.models.munka.find().where({user : req.session.user.azon}).then(function (munka){
+            if(munka.length > 0){
+                req.flash('info', 'Csak egy munkát vehet fel.');
+                res.redirect('/munkak/munkalista');
+            }else{
+                req.app.models.munka.create({
+                status  : 'free',
+                varos   : req.body.varos,
+                leiras  : req.body.leiras,
+                tipus   : req.body.tipus,
+                oraber  : req.body.oraber,
+                user    : req.session.user.azon,
+            })
+            .then(function (error) {
+                req.flash('info', 'Munka sikeresen felvéve!');
+                res.redirect('/munkak/munkalista');
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
+                }
+            })
+    
     }
 });
 
 
 router.get('/szerkeszt', function(req, res) {
-   req.app.models.munka.find().where({ user  :   req.session.user.azon }).then(function (munka) {
+    console.log("User teszt: " + req.session.user.azon)
+    req.app.models.munka.find().where({ user  :   req.session.user.azon }).then(function (munka) {
        if(munka.length == 0){
            req.flash('info', 'Még nem vett fel munkát.')
            res.redirect('../munkak/munkalista');
@@ -65,10 +72,8 @@ router.get('/szerkeszt', function(req, res) {
             messages : req.flash('info'),
             });
         }
-            
-        
         });
-        
+        //Innen kezdődik a próba kód
     });
 
 router.post('/szerkeszt', function(req, res) {
@@ -79,53 +84,48 @@ router.post('/szerkeszt', function(req, res) {
     req.checkBody('oraber').notEmpty().isInt().withMessage('Kötelező megadni!');
     req.checkBody('tipus').notEmpty().withMessage('Kötelező megadni!');
     
-    var validationErrors = req.validationErrors(true);
-    if(validationErrors){
-        console.log("Validation error")
-        req.flash('validationErrors', validationErrors);
-        req.flash('data', req.body);
-        res.redirect('/munkak_ado/szerkeszt');
-    }else{
-        req.app.models.munka.update({
-            status  : 'free',
-            varos   : req.app.models.munka.varos,
-            leiras  : req.app.models.munka.leiras,
-            tipus   : req.app.models.munka.tipus,
-            oraber  : req.app.models.munka.oraber,
-            },
-            {
-            status  : 'taken',
-            varos   : req.body.varos,
-            leiras  : req.body.leiras,
-            tipus   : req.body.tipus,
-            oraber  : req.body.oraber,
-            }
-        ).then(function (error, updated) {
-            req.flash('info', 'Munka sikeresen módosítva!');
-            res.redirect('/munkak/munkalista');
-        })
-        .catch(function (err, done) {
-                return done(null, false, {
-                    message :   err.details
-                });
-            })
-    }
+    req.app.models.munka.find().where({user : req.session.user.azon}).then(function(munka){
+        for(var i = 0; i < munka.length; ++i){
+            console.log("Városok: " + munka[i])
+            console.log("Munkák száma: " + munka.length)
+        req.app.models.munka.update(
+            {varos : munka[i].varos},{ varos : req.body.varos}
+            ).exec(function utana(updated){
+                
+            });
+        }
+         console.log("updated")
+         res.redirect('../munkak/munkalista');
+    });   
+
+     
+ 
+       
+    //}
+    
     
 });
 
-router.delete('/szerkeszt', function(req, res) {
-    console.log("törlés")
-})
+router.get('/delete', function(req, res) {
+      req.app.models.munka.destroy({user : req.session.user.azon}).exec(function deleteCB(err){
+          if(err){
+            
+              res.redirect('../munkak/munkalista');
+          }else{
+            
+            req.flash('info', 'A munkák törölve lettek.')
+            res.redirect('../munkak/munkalista')
+        }
+     
+    });
+});
+//handbar helpers
 
-//functions
-function functionKEtto(id){
-    console.log("Id test:" + id);
+function blabla(req, res){
+    hbs.reggisterHelper('leptet', function(){
+    res.redirect('../munkak_ado/szerkeszt')
+})
 }
 
-
-//handlebar saját
-hbs.registerHelper('getId', function(obj) {
-    console.log(obj.id)
-})
 
 module.exports = router;

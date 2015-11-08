@@ -1,4 +1,3 @@
-<script src="../controllers/szerk.js"></script>
 {{#each messages}}
 <div class="alert alert-dismissible alert-success">
     <button type="button" class="close" data-dismiss="alert">×</button>
@@ -6,12 +5,13 @@
 </div>
 {{/each}}
 
-
-
 <div class="page-header">
     <h1>Bejelentett munkák</h1>
 </div>
-<form role="form" class="form-group" method="get">
+
+
+<body>
+
 <table class="table table-hover">
     <thead>
         <tr>
@@ -28,6 +28,7 @@
     <tbody>
         {{#each munkak}}
         <tr>
+            <div class="form-group">
             <td><h5>{{azonosito}}</h5></td>
             <td><h5>{{user}}</h5></td>
             <td><h5>{{date}}</h5></td>
@@ -36,19 +37,23 @@
             <td><h5>{{oraber}}</h5></td>
             <td><h5>{{varos}}</h5></td>
             <td><h4><span for="status" class="label label-{{statusClass}}">{{statusText}}</span></h4></td>
-            <td><h4><button type="button" href="../munkak_ado/szerkeszt" class="btn btn-default" value="{{azonosito}}" id="{{id}}" onClick="{{getId this}}" active>Szerkesztés</h5></td>
-            <td><h4><a href="#" class="btn btn-default" role="button" id="torles" active>Törlés</a></h5></td>
+            <form method="post">
+                <td><h5><button type="submit" class="btn btn-primary" >Szerkeszt</h5></td>
+            </form>
+            </div>
         </tr>
         {{/each}}
     </tbody>
 </table>
-</form>
+
+
+
 <a href="../munkak_ado/felvesz" class="btn btn-default" role="button" active>Új munka felvétele</a>
+<a href="../munkak_ado/szerkeszt" class="btn btn-default" role="button" active>Szerkesztés</a>
+<a href="../munkak_ado/delete" class="btn btn-default" role="button" active>Törlés</a>
+</div>
+</body>
 
 
 
-<script type="text/javascript">
-    function myFunction(elt){
-      alert(elt.id)
-    }
-</script>
+

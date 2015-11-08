@@ -168,6 +168,7 @@ function andRestrictTo(engedely) {
         if (req.user.engedely == engedely) {
             return next();
         } else {
+            req.flash('info', 'Munka válallónak nincs joga munkát hozzáadni, szerkeszteni vagy törölni.')
            res.redirect('/munkak/munkalista');
         }
     }
@@ -186,6 +187,12 @@ app.get('/logout', function(req, res){
     res.redirect('/');
 });
 
+
+//function
+
+function klikk(){
+    console.log(klikk);
+}
 
 //ORM indítása
 orm.initialize(waterlineConfig, function(err, models) {
