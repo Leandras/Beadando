@@ -12,7 +12,7 @@ router.post('/', passport.authenticate('local', {
     successRedirect :   '/munkak/munkalista',
     failureRedirect :   '/login',
     failureFlash    :   true,
-    badRequestMessage:  'Hibás adatok' //nem írja ki...
+    badRequestMessage:  'Hibás adatok' 
     
 }));
 

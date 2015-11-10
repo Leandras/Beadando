@@ -165,7 +165,7 @@ function ensureAuthenticated(req, res, next) {
 
 function andRestrictTo(engedely) {
     return function(req, res, next) {
-        if (req.user.engedely == engedely) {
+        if (req.session.user.engedely == engedely) {
             return next();
         } else {
             req.flash('info', 'Munka válallónak nincs joga munkát hozzáadni, szerkeszteni vagy törölni.')

@@ -5,7 +5,7 @@ module.exports = {
         azonosito : {
             type : 'int',
             defaultsTo : function (){
-                return Math.floor((Math.random() * 100) + 10);
+                return Math.floor((Math.random() * 88) + 10);
             },
             primaryKey : true,
             required : 'true',

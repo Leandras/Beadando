@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 {{#each messages}}
 <div class="alert alert-dismissible alert-success">
     <button type="button" class="close" data-dismiss="alert">×</button>
@@ -9,13 +11,12 @@
     <h1>Bejelentett munkák</h1>
 </div>
 
-
+<head>
+</head>
 <body>
-
 <table class="table table-hover">
     <thead>
         <tr>
-            <th><h3>Azonosító</h3></th>
             <th><h3>User</h3></th>
             <th><h3>Dátum</h3></th>
             <th><h3>Típus</h3></th>
@@ -29,16 +30,18 @@
         {{#each munkak}}
         <tr>
             <div class="form-group">
-            <td><h5>{{azonosito}}</h5></td>
             <td><h5>{{user}}</h5></td>
             <td><h5>{{date}}</h5></td>
             <td><h5>{{tipus}}</h5></td>
             <td><h5>{{leiras}}</h5></td>
             <td><h5>{{oraber}}</h5></td>
-            <td><h5>{{varos}}</h5></td>
+            <td class><h5>{{varos}}</h5></td>
             <td><h4><span for="status" class="label label-{{statusClass}}">{{statusText}}</span></h4></td>
-            <form method="post">
-                <td><h5><button type="submit" class="btn btn-primary" >Szerkeszt</h5></td>
+            <form action="/munkak/munkalista" method="post">
+                <td><h5><button  id="{{azonosito}}" value="{{azonosito}}" type="submit" class="btn btn-primary" name="{{azonosito}}" >Szerkeszt</h5></td>
+            </form>
+            <form action="elfogad" method="post">
+                <td><h5><button  id="{{azonosito}}" value="{{azonosito}}" type="submit" class="btn btn-primary" name="{{azonosito}}" >Elfogad</h5></td>
             </form>
             </div>
         </tr>
@@ -46,13 +49,14 @@
     </tbody>
 </table>
 
+<form action="../munkak_ado/felvesz" method="get">
+    <button class="btn btn-primary" id="felvesz" type="submit">Új Munka Felvétele
+</form>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" src="../js/prob.js"></script>
 
-<a href="../munkak_ado/felvesz" class="btn btn-default" role="button" active>Új munka felvétele</a>
-<a href="../munkak_ado/szerkeszt" class="btn btn-default" role="button" active>Szerkesztés</a>
-<a href="../munkak_ado/delete" class="btn btn-default" role="button" active>Törlés</a>
 </div>
-</body>
 
 
 
