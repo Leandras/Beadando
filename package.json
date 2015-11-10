@@ -9,6 +9,7 @@
     "bootstrap-validator":"0.9.0",
     "connect-flash": "^0.1.1",
     "express": "^4.13.3",
+    "express-dynamic-helpers-patch":"0.0.2",
     "express-session": "^1.12.1",
     "express-validator": "^2.18.0",
     "handlebars-helpers":"0.5.8",
