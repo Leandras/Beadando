@@ -3,6 +3,7 @@ var router = express.Router();
 var Waterline = require("waterline");
 var session = require("express-session");
 var qs = require('querystring');
+var app = express();
 
 //Munka felvétele
 router.get('/felvesz', function(req, res) {
@@ -33,11 +34,6 @@ router.post('/felvesz', function (req, res) {
     
     else {
         req.app.models.munka.find().where({user : req.session.user.azon}).then(function (munka){
-            if(munka.length > 0){
-                req.flash('info', 'Csak egy munkát vehet fel.')
-                res.redirect('/munkak/munkalista');
-            }else{
-          
                 req.app.models.munka.create({
                 status  : 'free',
                 varos   : req.body.varos,
@@ -53,7 +49,6 @@ router.post('/felvesz', function (req, res) {
             .catch(function (err) {
                 console.log(err);
             });
-        }    
         })
     
     }
@@ -61,8 +56,7 @@ router.post('/felvesz', function (req, res) {
 
 
 router.get('/szerkeszt', function(req, res) {
-        
-  req.app.models.munka.find().where({ user  :   req.session.user.azon }).then(function (munka) {
+    req.app.models.munka.find().where({ user  :   req.session.user.azon }).where({azonosito : req.session.azon}).then(function (munka) {
        if(munka.length == 0){
            req.flash('info', 'Még nem vett fel munkát.')
            res.redirect('../munkak/munkalista');
@@ -74,7 +68,7 @@ router.get('/szerkeszt', function(req, res) {
             });
         }
         });
-        //Innen kezdődik a próba kód
+        
     });
 
 router.post('/szerkeszt', function(req, res) {
@@ -119,7 +113,8 @@ router.post('/szerkeszt', function(req, res) {
 });
 
 router.get('/delete', function(req, res) {
-   req.app.models.munka.destroy({user : req.session.user.azon}).exec(function(munka) {
+    
+   req.app.models.munka.destroy({user : req.session.user.azon}).where({azonosito : req.session.azon}).exec(function(munka) {
           if(munka){
               res.redirect('../munkak/munkalista');
           }else{
@@ -129,5 +124,17 @@ router.get('/delete', function(req, res) {
     });
 });
 
+router.get('/jovahagy', function(req, res) {
+    req.app.models.munka.find().where({azonosito : req.session.azon}).then(function(munka){
+        if(munka){
+        req.app.models.munka.update(
+            {status : 'pending'}, {status : 'taken' }
+        ).where({azonosito : req.session.azon}).exec(function(updated){
+            
+        });
+        res.redirect('/munkak/munkalista');
+    }
+    });
+})
 
 module.exports = router;

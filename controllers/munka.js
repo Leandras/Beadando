@@ -44,6 +44,7 @@ router.get('/munkalista', function (req, res){
 
 router.post('/munkalista', function(req, res){
     var azon = qs.stringify(req.body).slice(0, 2);
+    req.session.azon = azon;
     req.app.models.munka.find().where({azonosito : azon}).where({user : req.session.user.azon}).then(function(munka){
         if(munka.length > 0){
             res.redirect('../munkak_ado/szerkeszt')
@@ -57,16 +58,53 @@ router.post('/munkalista', function(req, res){
 
 router.post('/elfogad', function(req, res) {
     var azon = qs.stringify(req.body).slice(0, 2);
+    
     req.app.models.munka.find().where({azonosito : azon}).then(function(munka){
         if(munka){
-            req.app.models.munka.update(
-                {status: munka[0].status}, {status : 'pending'}
-            ).exec(function utana(updated){
+            if(!req.session.user.isMunkaado){
+                if(munka[0].status == 'pending'){
+                    messages : req.flash('info', 'Munkaadó jóváhagyására vár.')
+                    res.redirect('/munkak/munkalista')
                 
-            });
+                }else{
+                    req.app.models.munka.find().where({azonosito : azon}).then(function(munka) {
+                        req.app.models.munka.update(
+                        {status: munka[0].status}, {status : 'pending'}
+                        ).where({azonosito : azon}).exec(function utana(updated){
+                            messages : req.flash('info', 'Sikeresen regisztrálta magát a munkára!')
+                            res.redirect('/munkak/munkalista')
+                        });
+                        })
+                    }
+            }else if(req.session.user.isMunkaado && munka[0].status == 'pending'){
+                if(munka[0].user == req.session.user.azon){
+                req.session.azon = azon;
+                res.redirect('/munkak_ado/jovahagy');
+                }else{
+                    messages : req.flash('info', 'Más által feladott munkáról nem dönthet.')
+                    res.redirect('/munkak/munkalista')
+                }
+            }
+            else{
+            messages : req.flash('info', 'Munkaadó nem fogadhat el munkát.');
+            res.redirect('/munkak//munkalista');
         }
-        res.redirect('/munkak//munkalista');
+        }
+        
     });
 });
+
+router.post('/torol', function(req, res) {
+    var azon = qs.stringify(req.body).slice(0, 2);
+    req.session.azon = azon;
+    req.app.models.munka.find().where({azonosito : azon}).where({user : req.session.user.azon}).then(function (munka){
+        if(munka.length > 0){
+            res.redirect('../munkak_ado/delete')
+        }else{
+            messages : req.flash('info', 'Ezt a munkát Ön nem törölheti.');
+            res.redirect('munkalista');
+        }
+    })
+})
 
 module.exports = router;

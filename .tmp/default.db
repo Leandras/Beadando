@@ -2,7 +2,7 @@
   "data": {
     "munka": [
       {
-        "status": "pending",
+        "status": "taken",
         "varos": "Budapest",
         "leiras": "gépelés",
         "tipus": "irodai",
@@ -11,19 +11,31 @@
         "azonosito": "23",
         "date": "2015-11-10T06:47:53.266Z",
         "createdAt": "2015-11-10T06:47:53.269Z",
-        "updatedAt": "2015-11-10T11:12:51.478Z"
+        "updatedAt": "2015-11-11T08:33:59.413Z"
       },
       {
-        "status": "pending",
-        "varos": "Pécs",
-        "leiras": "Adat bevitel",
-        "tipus": "irodai",
-        "oraber": "1450",
+        "status": "taken",
+        "varos": "adwdaws",
+        "leiras": "wasd",
+        "tipus": "asdwd",
+        "oraber": "2342",
         "user": "2",
-        "azonosito": "62",
-        "date": "2015-11-10T11:20:23.279Z",
-        "createdAt": "2015-11-10T11:20:23.285Z",
-        "updatedAt": "2015-11-10T11:23:09.163Z"
+        "azonosito": "95",
+        "date": "2015-11-11T09:40:10.451Z",
+        "createdAt": "2015-11-11T09:40:10.455Z",
+        "updatedAt": "2015-11-11T09:41:30.812Z"
+      },
+      {
+        "status": "taken",
+        "varos": "wdasd",
+        "leiras": "weawda",
+        "tipus": "weasd",
+        "oraber": "32456",
+        "user": "2",
+        "azonosito": "54",
+        "date": "2015-11-11T09:40:17.718Z",
+        "createdAt": "2015-11-11T09:40:17.719Z",
+        "updatedAt": "2015-11-11T09:41:27.297Z"
       }
     ],
     "user": [

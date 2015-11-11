@@ -168,7 +168,7 @@ function andRestrictTo(engedely) {
         if (req.session.user.engedely == engedely) {
             return next();
         } else {
-            req.flash('info', 'Munka válallónak nincs joga munkát hozzáadni, szerkeszteni vagy törölni.')
+            req.flash('info', 'Munkaválallónak nincs joga munkát hozzáadni, szerkeszteni vagy törölni.')
            res.redirect('/munkak/munkalista');
         }
     }
