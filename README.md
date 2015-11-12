@@ -99,28 +99,36 @@
     1.  index: Az index controller megjelenítése.
                 
     2.  login: Három oldallal rendekezik. 
-        1.  Az "index" a főoldal, itt lehet bejelentkezni, valamint kiválasztani milyen szerepkörbe szeretnénk
-        regisztrálni magunkat. Hozzá tartozik egy "post" metódus.
+        1.  Az "index" a főoldal, itt lehet bejelentkezni, valamint kiválasztani milyen
+        szerepkörbe szeretnénk regisztrálni magunkat. Hozzá tartozik egy "post" metódus.
                                                     
-        2.  A "signup" a munkaadók regisztrációjának a sablonját tartalmazza. Hozzá tartozik egy
-        "get" és egy "post" metódus.
+        2.  A "signup" a munkaadók regisztrációjának a sablonját tartalmazza. 
+        Hozzá tartozik egy "get" és egy "post" metódus.
                                                     
-        3.  A "signupemp" a munkavállalók regisztrációjának sablonját tartalmazza. Hozzá tartozik egy
-        "get" és egy "post" metódus.
+        3.  A "signupemp" a munkavállalók regisztrációjának sablonját tartalmazza.
+        Hozzá tartozik egy "get" és egy "post" metódus.
                 
     3.  munkak : Két oldallal rendelkezik.
-        1.  Az "elfogad" csak egy egyszerű, üres hbs, mindössze azt a cél szolgálja, hogy egy munkavállaló 
-        elfogadjon egy adott munkát, ezzel megváltoztatva a munka státuszát. Hozzá tartozik egy "post" metódus.
-        A "munkalista" szerepe a munkák, azoknak a tulajdonságai, valamint a gombok megjelenítése, melyekke
-        a felhasználó közlekedni tud az oldalon. Hozzá tartozik egy "get" és egy "post" metódus.
+        1.  Az "elfogad" csak egy egyszerű, üres hbs, mindössze azt a cél szolgálja, hogy egy 
+        munkavállaló elfogadjon egy adott munkát, ezzel megváltoztatva a munka státuszát.
+        Hozzá tartozik egy "post" metódus.
+        
+        A "munkalista" szerepe a munkák, azoknak a tulajdonságai, valamint a gombok
+        megjelenítése, melyekke a felhasználó közlekedni tud az oldalon. 
+        Hozzá tartozik egy "get" és egy "post" metódus.
                                                     
     4.  munkak_ado : Három oldallal rendelkezik.
-        1.  A "delete" egy üres oldal, amely egy adott munka törléséért fele. Hozzá tartozik egy "get" metódus.
-        2.  A "felvesz" az új munka felvételének a sablonját tartalmazza. Hozzá tartozik egy "get" és egy "post" metódus.
-        3.  A "szerkeszt" a munkák szerkesztésének a sablonját tartalmazza. Hozzá tartozik egy "get" és egy "post" metódus.
+        1.  A "delete" egy üres oldal, amely egy adott munka törléséért fele. 
+        Hozzá tartozik egy "get" metódus.
+        
+        2.  A "felvesz" az új munka felvételének a sablonját tartalmazza. 
+        Hozzá tartozik egy "get" és egy "post" metódus.
+        
+        3.  A "szerkeszt" a munkák szerkesztésének a sablonját tartalmazza. 
+        Hozzá tartozik egy "get" és egy "post" metódus.
         
 <h6>6. Modellek</h6>
     Bejelentkezés menete/folyamat ábra:
-        ![Folyamat ábra](/docs/images/server_lanc.png)
+        ![Folyamat ábra](docs/images/server_lanc.png)
         
     
