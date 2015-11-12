@@ -9,15 +9,16 @@
         Alkalmazások fejlesztése órára egy olyan programot kellett készíteni mely a node js-t 
     felhasználva képes adatokat tárolni, új adatokat felvinni, meglévőket szerkeszteni 
     vagy törölni azokat. 
-        Elvárás volt még egy autentikációs folyamat is, melyben egy regisztrált személy csak akkor
-    haszánlhatja  programot/léphet be az oldalra, ha adatai megfelelnek és szerepel az adatbázisban.
+        Elvárás volt még egy autentikációs folyamat is, melyben egy regisztrált személy
+    csak akkor haszánlhatja  programot/léphet be az oldalra, ha adatai megfelelnek
+    és szerepel az adatbázisban.
 
 <h6>2.  A feladat implementálása</h6>
-        Egy munkakereső oldalt hoztam létre, melyet használhatznk munkavállaló vagy munkaadóként is. 
-    Mint munkaadók, képesek vagyunk új munkákat regisztrálni, a meglévőket módosítani vagy törölni 
-    azokat.
-        Mind munkavállalók, böngészehtünk a posztolt munkák között és elfogadhatjuk azokat, majd 
-        ha a munkavállaló is jóváhagyta, be is tölthetjük a kínált pozíciót.
+        Egy munkakereső oldalt hoztam létre, melyet használhatunk munkavállaló és munkaadóként. 
+    Mint munkaadók, képesek vagyunk új munkákat regisztrálni, a meglévőket módosítani vagy 
+    törölni azokat.
+        Mind munkavállalók, böngészehtünk a posztolt munkák között és elfogadhatjuk azokat,
+        majd ha a munkavállaló is jóváhagyta, be is tölthetjük a kínált pozíciót.
     
 <h6>3. Használati útmutató</h6>
         Mikor először megnyitjuk az oldalt, a főoldal fogad. Itt a jobb felső sarokan 
