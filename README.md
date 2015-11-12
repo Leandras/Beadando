@@ -58,7 +58,7 @@
     "zombie" és "chai" modulok nyújtottak segítséget.
     
 <h6>5. A program struktorális felépítése</h6>
-    <h7>Modellek:</h7>
+    Modellek:
     1.  User modell:
             A user modell tárolja a felhasználók adatait. Minden felhasználó rendelkezik
         vezeték és keresztnévvel, azonosítóval, jelszóval, egy tulajdonsággal hogy munkaadók vagy
@@ -72,7 +72,7 @@
         amely egy 10-99 közötti száma, értékét pedig egy random szám generátor állítja be. Emellett a munkaadóknak
         meg kell adniuk a munka típusát, leírását,órabérét valamint a várost ahol a munkát ajánlják.
     
-    <h7> Controllerek:</h7>
+    Controllerek:
     1.  index.js: 
             Egy egyszerű controller, ami a főoldalért felel, ki és be jelentkezési funciói vannak.
                 
@@ -92,10 +92,10 @@
         A munkaadók végrehajthatják az imént említett funkciókat, azonban rájuk is vonatkoznak megkötések.
         Más munkaadó felhasználó által létrehozott munkákat nem módosíthatnak/törölhetnek.
         
-    <h7>Public:</h7>
+    Public:
             Az alkalmazás alatt a Bootstrap "sueprhero" sémája fut.
     
-    <h7>Views:</h7>
+    Views:
     1.  index: Az index controller megjelenítése.
                 
     2.  login: Három oldallal rendekezik. 
@@ -118,3 +118,9 @@
         1.  A "delete" egy üres oldal, amely egy adott munka törléséért fele. Hozzá tartozik egy "get" metódus.
         2.  A "felvesz" az új munka felvételének a sablonját tartalmazza. Hozzá tartozik egy "get" és egy "post" metódus.
         3.  A "szerkeszt" a munkák szerkesztésének a sablonját tartalmazza. Hozzá tartozik egy "get" és egy "post" metódus.
+        
+<h6>6. Modellek</h6>
+    Bejelentkezés menete/folyamat ábra:
+        ![Folyamat ábra](/docs/images/server_lanc.png)
+        
+    
