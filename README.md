@@ -129,9 +129,13 @@
         Hozzá tartozik egy "get" és egy "post" metódus.
         
 <h6>6. Modellek</h6>
-
+    
+    
         ![Folyamat ábra](docs/images/server_lanc.png)
         
+
+
+
 
         ![Modellek](docs/images/user_munka.png)
         
