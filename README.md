@@ -5,8 +5,7 @@
 <h5>Nemptun: AGY276</h5>
 <h5>email: levaiandrass@gmail.com</h5>
 
-<h6>**Követelmény analízis**</h6>
-1.  Követelmény leírása
+<h6>1.  Követelmény analízis</h6>
     Alkalmazások fejlesztése órára egy olyan programot kellett készíteni mely a node js-t felhasználva képes adatokat tárolni, új adatokat felvinni, meglévőket szerkeszteni vagy törölni azokat. 
     Elvárás volt még egy autentikációs folyamat is, melyben egy regisztrált személy csak akkor haszánlhatja  programot/léphet be az oldalra, ha adatai megfelelnek és szerepel az adatbázisban.
 
