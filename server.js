@@ -164,7 +164,7 @@ function ensureAuthenticated(req, res, next) {
 }
 
 function andRestrictTo(engedely) {
-    return function(req, res, next) {
+    return function(req, res, next, user) {
         if (req.session.user.engedely == engedely) {
             return next();
         } else {

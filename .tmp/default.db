@@ -14,28 +14,28 @@
         "updatedAt": "2015-11-11T08:33:59.413Z"
       },
       {
-        "status": "taken",
-        "varos": "adwdaws",
-        "leiras": "wasd",
-        "tipus": "asdwd",
-        "oraber": "2342",
+        "status": "free",
+        "varos": "Kaposvár",
+        "leiras": "könyvelés",
+        "tipus": "irodai",
+        "oraber": "900",
         "user": "2",
-        "azonosito": "95",
-        "date": "2015-11-11T09:40:10.451Z",
-        "createdAt": "2015-11-11T09:40:10.455Z",
-        "updatedAt": "2015-11-11T09:41:30.812Z"
+        "azonosito": "15",
+        "date": "2015-11-11T09:45:23.536Z",
+        "createdAt": "2015-11-11T09:45:23.539Z",
+        "updatedAt": "2015-11-11T09:45:23.539Z"
       },
       {
         "status": "taken",
-        "varos": "wdasd",
-        "leiras": "weawda",
-        "tipus": "weasd",
-        "oraber": "32456",
+        "varos": "Szoboszló",
+        "leiras": "ásás",
+        "tipus": "fizikai",
+        "oraber": "750",
         "user": "2",
-        "azonosito": "54",
-        "date": "2015-11-11T09:40:17.718Z",
-        "createdAt": "2015-11-11T09:40:17.719Z",
-        "updatedAt": "2015-11-11T09:41:27.297Z"
+        "azonosito": "72",
+        "date": "2015-11-11T09:45:44.335Z",
+        "createdAt": "2015-11-11T09:45:44.336Z",
+        "updatedAt": "2015-11-11T09:46:02.538Z"
       }
     ],
     "user": [
