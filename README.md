@@ -131,4 +131,7 @@
     Bejelentkezés menete/folyamat ábra:
         ![Folyamat ábra](docs/images/server_lanc.png)
         
+    Modellek
+        ![Modellek](docs/images/user_munka.png)
+        
     
