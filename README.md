@@ -130,9 +130,9 @@
         
 <h6>6. Modellek</h6>
     Bejelentkezés menete/folyamat ábra:
-        ![Folyamat ábra](images/server_lanc.png)
+        [Folyamat ábra!](docs/images/server_lanc.png)
         
     Modellek
-        ![Modellek](images/user_munka.png)
+        [Modellek!](docs/images/user_munka.png)
         
     
