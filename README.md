@@ -129,10 +129,10 @@
         Hozzá tartozik egy "get" és egy "post" metódus.
         
 <h6>6. Modellek</h6>
-    Bejelentkezés menete/folyamat ábra:
-        [Folyamat ábra!](docs/images/server_lanc.png)
+
+        ![Folyamat ábra](docs/images/server_lanc.png)
         
-    Modellek
-        [Modellek!](docs/images/user_munka.png)
+
+        ![Modellek](docs/images/user_munka.png)
         
     
