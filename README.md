@@ -69,8 +69,9 @@
                 
     2.  Munka modell: 
             Itt tároljuk a munkának a tulajdonságait. Minden munka rendelkezik egy azonosítóval,
-        amely egy 10-99 közötti száma, értékét pedig egy random szám generátor állítja be. Emellett a munkaadóknak
-        meg kell adniuk a munka típusát, leírását,órabérét valamint a várost ahol a munkát ajánlják.
+        amely egy 10-99 közötti száma, értékét pedig egy random szám generátor állítja be.
+        Emellett a munkaadóknak meg kell adniuk a munka típusát, leírását,órabérét valamint a
+        várost ahol a munkát ajánlják.
     
     Controllerek:
     1.  index.js: 
@@ -78,13 +79,13 @@
                 
     2.  login.js:
             A login három úttal rendelkezik, egy a bejelentkezésért felel, a másik kettő pedig a 
-        munkavállalói és a munkaadói űrlapokkal és az azon felvett adatokkal foglalkozik. A tényleges
-        bejelentkezés vizsgálatát azonban a
-        "server.js" fájl intézi.
+        munkavállalói és a munkaadói űrlapokkal és az azon felvett adatokkal foglalkozik. 
+        A tényleges bejelentkezés vizsgálatát azonban a "server.js" fájl intézi.
                 
     3.  munka.js:
             Ez a controller jeleníti meg a munkák listáját, melyek táblázatba vannak elhelyezve.
-        A felhasználó erre az oldalra érkezik bejelentkezés után és innen mehet tovább a többi opcióra.
+        A felhasználó erre az oldalra érkezik bejelentkezés után és innen mehet tovább
+        a többi opcióra.
                 
     4. szerk.js:
             Az alkalmazás legfontosabb része. Ez az út zárt a munkavállalók számára, hiszen ők le
