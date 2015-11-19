@@ -78,6 +78,16 @@
         "isMunkaado": true,
         "createdAt": "2015-11-10T11:00:34.497Z",
         "updatedAt": "2015-11-10T11:00:34.497Z"
+      },
+      {
+        "vezeteknev": "a",
+        "keresztnev": "a",
+        "azon": "a",
+        "password": "$2a$10$WzAXyj4t8nY6g63kwCuyD.qUTjJ4/uP.xpRMQ7YdfZqDbESA7/KEW",
+        "isMunkaado": false,
+        "engedely": "munkavallalo",
+        "createdAt": "2015-11-17T09:36:07.762Z",
+        "updatedAt": "2015-11-17T09:36:07.762Z"
       }
     ]
   },

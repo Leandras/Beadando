@@ -37,8 +37,8 @@ describe('User visits new error page', function (argument) {
     
     it('should be able to login with correct credentials', function (done) {
         browser
-            .fill('azon', 'k')
-            .fill('password', 'k')
+            .fill('azon', '1')
+            .fill('password', '1')
             .pressButton('login') //'button[type=submit]'
             .then(function () {
                 browser.assert.redirected();

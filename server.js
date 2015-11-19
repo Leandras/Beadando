@@ -164,7 +164,8 @@ function ensureAuthenticated(req, res, next) {
 }
 
 function andRestrictTo(engedely) {
-    return function(req, res, next, user) {
+    return function(req, res, next) {
+        console.log(req.session.user.engedely + " -- " + engedely);
         if (req.session.user.engedely == engedely) {
             return next();
         } else {
@@ -174,12 +175,11 @@ function andRestrictTo(engedely) {
     }
 }
 
-
 //endpoints
 app.use('/', indexController);
 app.use('/munkak',ensureAuthenticated, munkakController);
 app.use('/login', loginController);
-app.use('/munkak_ado',andRestrictTo('munkaado'), szerkController);
+app.use('/munkak_ado',ensureAuthenticated, andRestrictTo('munkaado'), szerkController);
 
 
 app.get('/logout', function(req, res){
