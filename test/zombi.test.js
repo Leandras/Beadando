@@ -37,9 +37,9 @@ describe('User visits new error page', function (argument) {
     
     it('should be able to login with correct credentials', function (done) {
         browser
-            .fill('azon', '1')
-            .fill('password', '1')
-            .pressButton('login') //'button[type=submit]'
+            .fill('azon', '2')
+            .fill('password', '2')
+            .pressButton('button[id=login]') //'button[type=submit]'
             .then(function () {
                 browser.assert.redirected();
                 browser.assert.success();
@@ -48,7 +48,7 @@ describe('User visits new error page', function (argument) {
             });
     });
         
-    it('should go the error page', function () {
+    it('should go the jobs page', function () {
         return browser.visit('/munkak_ado/felvesz')
         .then(function () {
             browser.assert.success();
@@ -56,7 +56,7 @@ describe('User visits new error page', function (argument) {
         });
     });
     
-    it('should show errors if the form fields are not right', function () {
+    it('should show jobs if the form fields are not right', function () {
         return browser
             .fill('varos', '')
             .fill('tipus', '')
