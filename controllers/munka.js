@@ -66,6 +66,9 @@ router.post('/elfogad', function(req, res) {
                     messages : req.flash('info', 'Munkaadó jóváhagyására vár.')
                     res.redirect('/munkak/munkalista')
                 
+                }else if(munka[0].status == 'taken'){
+                    messages : req.flash('info', 'Ezt a munkát már betöltötték.')
+                    res.redirect('/munkak/munkalista')
                 }else{
                     req.app.models.munka.find().where({azonosito : azon}).then(function(munka) {
                         req.app.models.munka.update(

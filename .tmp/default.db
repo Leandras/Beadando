@@ -14,7 +14,7 @@
         "updatedAt": "2015-11-11T08:33:59.413Z"
       },
       {
-        "status": "free",
+        "status": "pending",
         "varos": "Kaposvár",
         "leiras": "könyvelés",
         "tipus": "irodai",
@@ -23,7 +23,7 @@
         "azonosito": "15",
         "date": "2015-11-11T09:45:23.536Z",
         "createdAt": "2015-11-11T09:45:23.539Z",
-        "updatedAt": "2015-11-11T09:45:23.539Z"
+        "updatedAt": "2015-11-19T15:45:50.642Z"
       },
       {
         "status": "taken",
