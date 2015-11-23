@@ -6,7 +6,7 @@
 <h5>email: levaiandrass@gmail.com</h5>
 
 #### __Követelmény__ __analízis__
-    ###### Funkciók és elvárások
+######  Funkciók és elvárások
         Alkalmazások fejlesztése órára egy olyan programot kellett készíteni mely a node js-t 
     felhasználva képes adatokat tárolni, új adatokat felvinni, meglévőket szerkeszteni 
     vagy törölni azokat. 
@@ -14,7 +14,7 @@
     csak akkor haszánlhatja  programot/léphet be az oldalra, ha adatai megfelelnek
     és szerepel az adatbázisban.
 
-    ###### Használatieset-modell
+###### Használatieset-modell
         i. Szerepkörök : Két fajta felhasználó a munkaadó és a munkaválalló, szerepkörüket
     tekintve a munkavállaló jobban lekorlátozott az alkalmazás funkciójaival szemben.
     
