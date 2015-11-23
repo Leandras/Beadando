@@ -49,7 +49,7 @@
     munkavállaló jelentkezett egy munkára. Ezután mi elfogadhatjuk ezt és így a munka
     betöltötté válik.
     
-     ![Felhasználók](docs/images/users.png)
+![Felhasználók](docs/images/users.png)
 
 ### __Tervezés__
 
