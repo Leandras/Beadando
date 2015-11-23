@@ -5,13 +5,15 @@
 <h5>Nemptun: AGY276</h5>
 <h5>email: levaiandrass@gmail.com</h5>
 
-<h6>1.  Követelmény analízis</h6>
+__1.__  __Követelmény__ __analízis__
         Alkalmazások fejlesztése órára egy olyan programot kellett készíteni mely a node js-t 
     felhasználva képes adatokat tárolni, új adatokat felvinni, meglévőket szerkeszteni 
     vagy törölni azokat. 
         Elvárás volt még egy autentikációs folyamat is, melyben egy regisztrált személy
     csak akkor haszánlhatja  programot/léphet be az oldalra, ha adatai megfelelnek
     és szerepel az adatbázisban.
+
+<h6>2.  Használatieset-modell</h6>
 
 <h6>2.  A feladat implementálása</h6>
         Egy munkakereső oldalt hoztam létre, melyet használhatunk munkavállaló és munkaadóként. 
