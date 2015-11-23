@@ -51,7 +51,7 @@
     
      ![Felhasználók](docs/images/users.png)
 
-### __3.__ __Tervezés__
+### __Tervezés__
 
 ##### 1.Architektúra terv
     i. Oldaltérkép
@@ -88,7 +88,106 @@
             * POST /szerkeszt: Szerkesztett munka mentése
             * GET /delete: Munka törlése
             * GET /jovahagy: Munkavállaló jelentkezésének elfogadása
+            
+##### 2. Felhasználói felület modell
+    i. Hibalista vázlat
+         ![Hibalista vázlat](docs/images/hibalista_vazlat.png)
+         
+##### 3.Osztálymodell
+    i. User modell:
+        ![User modell](docs/images/user_modell.png)
+    
+    ii. Munka modell:
+        ![User modell](docs/images/munka_modell.png)
+    
+    iii. Állapot diagramm:
+        ![Állapot diagramm](docs/images/munka_allapot.png)
+
+### Implementáció
+###### 1. Fejlesztői környezet
+        Az alkalmazás a cloud9 (c9.io) segítségével készült. A designról a Bootstrap
+    gondoskodik. A kód közzététele a Githubon törént a program pedig a Heroku-n lett
+    szimulálva.
+
+###### 2. Könyvtárstruktúra
+    Modellek:
+        1.  User modell:
+                A user modell tárolja a felhasználók adatait. Minden felhasználó rendelkezik
+            vezeték és keresztnévvel, azonosítóval, jelszóval, egy tulajdonsággal hogy munkaadók vagy
+            munkavállalók e, egy boolean típusú 'isMunkaado' értékkel, ami eldönti róluk hogy miylen 
+            típúsuak (ennek értéke alap állapotba false, de amikor munkavállalóval regisztrálunk akkor 
+            ennek értéke true lesz). Emellet a munkavállalói regisztrációks űrlapon megadható egy cég
+            név is és egy város név, de ezek opcionálisak csak.
+                    
+        2.  Munka modell: 
+                Itt tároljuk a munkának a tulajdonságait. Minden munka rendelkezik egy azonosítóval,
+            amely egy 10-99 közötti száma, értékét pedig egy random szám generátor állítja be.
+            Emellett a munkaadóknak meg kell adniuk a munka típusát, leírását,órabérét valamint a
+            várost ahol a munkát ajánlják.
         
+    Controllerek:
+        1.  index.js: 
+                Egy egyszerű controller, ami a főoldalért felel, ki és be jelentkezési funciói vannak.
+                    
+        2.  login.js:
+                A login három úttal rendelkezik, egy a bejelentkezésért felel, a másik kettő pedig a 
+            munkavállalói és a munkaadói űrlapokkal és az azon felvett adatokkal foglalkozik. 
+            A tényleges bejelentkezés vizsgálatát azonban a "server.js" fájl intézi.
+                    
+        3.  munka.js:
+                Ez a controller jeleníti meg a munkák listáját, melyek táblázatba vannak elhelyezve.
+            A felhasználó erre az oldalra érkezik bejelentkezés után és innen mehet tovább
+            a többi opcióra.
+                    
+        4. szerk.js:
+                Az alkalmazás legfontosabb része. Ez az út zárt a munkavállalók számára, hiszen ők le
+            vannak korlátozva, nem vehetnek fel munkákat, így nem is szerkeszthetik vagy törölhetik azokat.
+            A munkaadók végrehajthatják az imént említett funkciókat, azonban rájuk is vonatkoznak megkötések.
+            Más munkaadó felhasználó által létrehozott munkákat nem módosíthatnak/törölhetnek.
+            
+    Public:
+        Az alkalmazás alatt a Bootstrap "sueprhero" sémája fut.
+    
+    Views:
+        1.  index: Az index controller megjelenítése.
+                    
+        2.  login: Három oldallal rendekezik. 
+            1.  Az "index" a főoldal, itt lehet bejelentkezni, valamint kiválasztani milyen
+            szerepkörbe szeretnénk regisztrálni magunkat. Hozzá tartozik egy "post" metódus.
+                                                        
+            2.  A "signup" a munkaadók regisztrációjának a sablonját tartalmazza. 
+            Hozzá tartozik egy "get" és egy "post" metódus.
+                                                        
+            3.  A "signupemp" a munkavállalók regisztrációjának sablonját tartalmazza.
+            Hozzá tartozik egy "get" és egy "post" metódus.
+                    
+        3.  munkak : Két oldallal rendelkezik.
+            1.  Az "elfogad" csak egy egyszerű, üres hbs, mindössze azt a cél szolgálja, hogy egy 
+            munkavállaló elfogadjon egy adott munkát, ezzel megváltoztatva a munka státuszát.
+            Hozzá tartozik egy "post" metódus.
+            
+            A "munkalista" szerepe a munkák, azoknak a tulajdonságai, valamint a gombok
+            megjelenítése, melyekke a felhasználó közlekedni tud az oldalon. 
+            Hozzá tartozik egy "get" és egy "post" metódus.
+                                                        
+        4.  munkak_ado : Három oldallal rendelkezik.
+            1.  A "delete" egy üres oldal, amely egy adott munka törléséért fele. 
+            Hozzá tartozik egy "get" metódus.
+            
+            2.  A "felvesz" az új munka felvételének a sablonját tartalmazza. 
+            Hozzá tartozik egy "get" és egy "post" metódus.
+            
+            3.  A "szerkeszt" a munkák szerkesztésének a sablonját tartalmazza. 
+            Hozzá tartozik egy "get" és egy "post" metódus.
+            
+    Workspace:
+        1. package.json: A modulokat valamint a tesztek futtatásáért felelős.
+        2. README.md: A dokumentációt tartlamazza
+        3. server.js: A szerver indításáért felel. Itt ellenőrzi az alkalmazás a különböző
+        szerepköröket valamint a jogosultságokat.
+
+### Tesztelés
+    
 <h6>3. Használati útmutató</h6>
         Mikor először megnyitjuk az oldalt, a főoldal fogad. Itt a jobb felső sarokan 
     kattinthatunk a bejelentkezésre, ami átírányít minket a következő oldalra.
@@ -126,86 +225,4 @@
     felvételét. A "zombi.test.js" pedig a honlap felépítését ellenőrizte. Ezekhez a "moccha",
     "zombie" és "chai" modulok nyújtottak segítséget.
     
-<h6>5. A program struktorális felépítése</h6>
-    Modellek:
-    1.  User modell:
-            A user modell tárolja a felhasználók adatait. Minden felhasználó rendelkezik
-        vezeték és keresztnévvel, azonosítóval, jelszóval, egy tulajdonsággal hogy munkaadók vagy
-        munkavállalók e, egy boolean típusú 'isMunkaado' értékkel, ami eldönti róluk hogy miylen 
-        típúsuak (ennek értéke alap állapotba false, de amikor munkavállalóval regisztrálunk akkor 
-        ennek értéke true lesz). Emellet a munkavállalói regisztrációks űrlapon megadható egy cég
-        név is és egy város név, de ezek opcionálisak csak.
-                
-    2.  Munka modell: 
-            Itt tároljuk a munkának a tulajdonságait. Minden munka rendelkezik egy azonosítóval,
-        amely egy 10-99 közötti száma, értékét pedig egy random szám generátor állítja be.
-        Emellett a munkaadóknak meg kell adniuk a munka típusát, leírását,órabérét valamint a
-        várost ahol a munkát ajánlják.
-    
-    Controllerek:
-    1.  index.js: 
-            Egy egyszerű controller, ami a főoldalért felel, ki és be jelentkezési funciói vannak.
-                
-    2.  login.js:
-            A login három úttal rendelkezik, egy a bejelentkezésért felel, a másik kettő pedig a 
-        munkavállalói és a munkaadói űrlapokkal és az azon felvett adatokkal foglalkozik. 
-        A tényleges bejelentkezés vizsgálatát azonban a "server.js" fájl intézi.
-                
-    3.  munka.js:
-            Ez a controller jeleníti meg a munkák listáját, melyek táblázatba vannak elhelyezve.
-        A felhasználó erre az oldalra érkezik bejelentkezés után és innen mehet tovább
-        a többi opcióra.
-                
-    4. szerk.js:
-            Az alkalmazás legfontosabb része. Ez az út zárt a munkavállalók számára, hiszen ők le
-        vannak korlátozva, nem vehetnek fel munkákat, így nem is szerkeszthetik vagy törölhetik azokat.
-        A munkaadók végrehajthatják az imént említett funkciókat, azonban rájuk is vonatkoznak megkötések.
-        Más munkaadó felhasználó által létrehozott munkákat nem módosíthatnak/törölhetnek.
-        
-    Public:
-            Az alkalmazás alatt a Bootstrap "sueprhero" sémája fut.
-    
-    Views:
-    1.  index: Az index controller megjelenítése.
-                
-    2.  login: Három oldallal rendekezik. 
-        1.  Az "index" a főoldal, itt lehet bejelentkezni, valamint kiválasztani milyen
-        szerepkörbe szeretnénk regisztrálni magunkat. Hozzá tartozik egy "post" metódus.
-                                                    
-        2.  A "signup" a munkaadók regisztrációjának a sablonját tartalmazza. 
-        Hozzá tartozik egy "get" és egy "post" metódus.
-                                                    
-        3.  A "signupemp" a munkavállalók regisztrációjának sablonját tartalmazza.
-        Hozzá tartozik egy "get" és egy "post" metódus.
-                
-    3.  munkak : Két oldallal rendelkezik.
-        1.  Az "elfogad" csak egy egyszerű, üres hbs, mindössze azt a cél szolgálja, hogy egy 
-        munkavállaló elfogadjon egy adott munkát, ezzel megváltoztatva a munka státuszát.
-        Hozzá tartozik egy "post" metódus.
-        
-        A "munkalista" szerepe a munkák, azoknak a tulajdonságai, valamint a gombok
-        megjelenítése, melyekke a felhasználó közlekedni tud az oldalon. 
-        Hozzá tartozik egy "get" és egy "post" metódus.
-                                                    
-    4.  munkak_ado : Három oldallal rendelkezik.
-        1.  A "delete" egy üres oldal, amely egy adott munka törléséért fele. 
-        Hozzá tartozik egy "get" metódus.
-        
-        2.  A "felvesz" az új munka felvételének a sablonját tartalmazza. 
-        Hozzá tartozik egy "get" és egy "post" metódus.
-        
-        3.  A "szerkeszt" a munkák szerkesztésének a sablonját tartalmazza. 
-        Hozzá tartozik egy "get" és egy "post" metódus.
-        
-<h6>6. Modellek</h6>
-    
-    
-        ![Folyamat ábra](docs/images/server_lanc.png)
-        
 
-
-
-
-        ![Modellek](docs/images/user_munka.png)
-        
-    
