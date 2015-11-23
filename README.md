@@ -5,7 +5,7 @@
 <h5>Nemptun: AGY276</h5>
 <h5>email: levaiandrass@gmail.com</h5>
 
-##### __1.__  __Követelmény__ __analízis__
+#### __1.__  __Követelmény__ __analízis__
         Alkalmazások fejlesztése órára egy olyan programot kellett készíteni mely a node js-t 
     felhasználva képes adatokat tárolni, új adatokat felvinni, meglévőket szerkeszteni 
     vagy törölni azokat. 
@@ -13,8 +13,40 @@
     csak akkor haszánlhatja  programot/léphet be az oldalra, ha adatai megfelelnek
     és szerepel az adatbázisban.
 
-<h6>2.  Használatieset-modell</h6>
-
+#### __2.__  __Használatieset-modell__
+        i. Szerepkörök : Két fajta felhasználó a munkaadó és a munkaválalló, szerepkörüket
+    tekintve a munkavállaló jobban lekorlátozott az alkalmazás funkciójaival szemben.
+        ii. Használati útmutató a két felhasználó modellhez:  Az alkalmazásban két fajta
+    felhasználó elérhető, a munkaadó és a munkavállaló.
+    A munkaválallók lehetőségei korlátozzok, nekik csak meghirdetett munkák megtekin-
+    tésére és azokra való jelentkezésre van lehetőségük (ha a munka szabad). A munka-
+    adó ezzel ellentétben felvehet új munkát, szerkesztheti, törölheti azokat és el is
+    fogadhatja, ha egy munkavállaló jelentkezett a munkára. Ennél a modellnél mindösz-
+    sze annyi megkötés van, hogy nem fogadhat el munkát valamint más munkaadó feladott
+    munkáját értelem szerűen nem szerkesztheti/törölheti.
+        iii. Folyamat diagramm és a Munkavállaló modell kifejtése.
+    A bejelnetkezés oldalra érkezve eldönthetjük milyen típusú felhasználót szeretnénk 
+    regisztrálni. Jelen esetben vegyük a munkavállalót, hiszen ő kevésbé lekorlátozott
+    szerepkört tölt be. A regisztrációs oldalon meg kell adnunk vezeték és keresztnevünk
+    , felhasznlói nevünk, jelszót, valamint lehetőségünk van céget és várost megadni, de
+    ezeket az alkalmazás nem várja el, így üresen is hagyhatjuk őket, ha szereretnénk.
+    Regisztráció után, sikeres bejelentkezéssel a feladott munkák listája fogad minket.
+    Itt a bal alsó sarokban található gombal felvehetünk egy új munkát. Ezután átkerülünk
+    a munka felvételének az oldalára. Itt meg kell adnunk kötelező módon a várost amely-
+    ben a munkát hirdetjük, a típusát (például fizikai vagy irodai), egy rövid leírását
+    és az órabért. Ha ezt sikeresen megadtuk ismét visszakerülünk a munkák listáját meg-
+    jelenítő oldalra, ahol már meg fog jelenni az imént felvett munkánk is. Ez után lehe-
+    tőségünk lesz szerkeszteni vagy törölni a feladott munkát. Törlés esetén az alkalmazás 
+    egyszerűen csak törli az adatbázisból az információkat. Szerkesztés esetén egy újabb
+    oldalra jutunk, ahol a korábban feladott munka bármely tulajdonságát szabadon változ-
+    tathatjuk (olyan megkötésekkel mint például, hogy az órabér csak szám lehet). Nem
+    muszáj minden adatot módosítanunk vagy újra beírnunk csak azokat melyeket ténylegesen
+    változtazni szeretnénk. A harmadik gomb akkor válik számunkra elérhetővé, ha egy 
+    munkavállaló jelentkezett egy munkára. Ezután mi elfogadhatjuk ezt és így a munka
+    betöltötté válik.
+    
+     ![Felhasználók](docs/images/users.png)
+        
 <h6>2.  A feladat implementálása</h6>
         Egy munkakereső oldalt hoztam létre, melyet használhatunk munkavállaló és munkaadóként. 
     Mint munkaadók, képesek vagyunk új munkákat regisztrálni, a meglévőket módosítani vagy 
