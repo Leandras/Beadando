@@ -91,17 +91,17 @@
             
 ##### 2. Felhasználói felület modell
     i. Hibalista vázlat
-         ![Hibalista vázlat](docs/images/hibalista_vazlat.png)
+![Hibalista vázlat](docs/images/hibalista_vazlat.png)
          
 ##### 3.Osztálymodell
     i. User modell:
-        ![User modell](docs/images/user_modell.png)
+![User modell](docs/images/user_modell.png)
     
     ii. Munka modell:
-        ![User modell](docs/images/munka_modell.png)
+![User modell](docs/images/munka_modell.png)
     
     iii. Állapot diagramm:
-        ![Állapot diagramm](docs/images/munka_allapot.png)
+![Állapot diagramm](docs/images/munka_allapot.png)
 
 ### Implementáció
 ###### 1. Fejlesztői környezet
@@ -207,7 +207,7 @@
 ###### 1. A futtatáshoz ajánlott konfiguráció:
         Az alkalmazás probléma mentesen működik a nagyobb böngészőkön mint például az Internet
     Explorer, Chrome vagy Firefox.
-    [Az alkalmazás elérhetősége](https://leandras.herokuapp.com/)
+[Az alkalmazás elérhetősége](https://leandras.herokuapp.com/)
 
 ###### 2. A telepítés lépései:
         Az alkalmazás kódja és mappa struktúrája lementhető github-ról, közvetlen klónozva
