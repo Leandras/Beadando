@@ -162,9 +162,9 @@
             Hozzá tartozik egy "get" és egy "post" metódus.
                     
         3.  munkak : Két oldallal rendelkezik.
-            1.  Az "elfogad" csak egy egyszerű, üres hbs, mindössze azt a cél szolgálja, hogy egy 
-            munkavállaló elfogadjon egy adott munkát, ezzel megváltoztatva a munka státuszát.
-            Hozzá tartozik egy "post" metódus.
+            1.  Az "elfogad" csak egy egyszerű, üres hbs, mindössze azt a cél szolgálja, 
+            hogy egybmunkavállaló elfogadjon egy adott munkát, ezzel megváltoztatva a
+            munka státuszát. Hozzá tartozik egy "post" metódus.
             
             A "munkalista" szerepe a munkák, azoknak a tulajdonságai, valamint a gombok
             megjelenítése, melyekke a felhasználó közlekedni tud az oldalon. 
@@ -187,9 +187,36 @@
         szerepköröket valamint a jogosultságokat.
 
 ### Tesztelés
+###### 1. Tesztelési környezet 
+        A teszteléshez két modult használtam, a zombie-t, amellyel  a végpontok elérését, 
+    valamint a funkciókat teszteltem és a moccha-t, mely a modellek tesztelésében segédkezett.
+
+###### 2. Egységteszt, user modell  
+        A moccha segítségével a test mappában található munkaado.test.js teszteli az alkal-
+    mazást mind a munkavállaló mind pedig a munkaadó regiisztrációjára, az újonnan felvett
+    felhasználók prezisztálását az adatbázisban, a hibásan megadott adatok jelzése valamint a
+    bejelentkezést és a jelszó validációt is.
+###### 3. Funkcionális felületi tesztek
+        A zombie.js segítségével lett tesztelve az alkalmazás funckió. ellenőrzi, hogy adott
+    útvonalakon megfelelő helyre jut-e el a program (megfelelő végpontokba) emellett ellenőrzi
+    még az új munka felvételét is és az adatok hiányának hibáit. Itt fontos megjegyezni, hogy a
+    test által megszabott alap 200ms várakozási idővel a teszt hibát dob ki, de ha a timeout 
+    kicsit megemeljük a teszt már probléma nélkül lefut.
     
-<h6>3. Használati útmutató</h6>
-        Mikor először megnyitjuk az oldalt, a főoldal fogad. Itt a jobb felső sarokan 
+### Felhasználói dokumentáció
+###### 1. A futtatáshoz ajánlott konfiguráció:
+        Az alkalmazás probléma mentesen működik a nagyobb böngészőkön mint például az Internet
+    Explorer, Chrome vagy Firefox.
+    [Az alkalmazás elérhetősége](https://leandras.herokuapp.com/)
+
+###### 2. A telepítés lépései:
+        Az alkalmazás kódja és mappa struktúrája lementhető github-ról, közvetlen klónozva
+    HTTPS: https://github.com/Leandras/Beadando.git
+    SSH: git@github.com:Leandras/Beadando.git
+    Subversion: https://github.com/Leandras/Beadando
+
+###### 3. A program használata
+         Mikor először megnyitjuk az oldalt, a főoldal fogad. Itt a jobb felső sarokan 
     kattinthatunk a bejelentkezésre, ami átírányít minket a következő oldalra.
     
         Ha még nem vagyunk regisztrálva, úgy itt eldönthetjük milyen szerepkörbe
@@ -213,16 +240,3 @@
     detjük, a típusát, mint például fizikai vagy irodai, egy rövid leírást a 
     munkáról, legvégül pedig az órabért. Miután feladtuk a munkát, szerkezhetjük
     utólag is ezeket a paramétereket.
-    
-<h6>4. Tesztelés</h6>
-        A programban jelenleg három előre meghatározott felhasználó van regisztrálva,
-    emelett három munka van felvéve, státusz zserint különbözől (betöltött, döntésre vár,
-    szabad). Az első felhasználó (felhnév.: 1 jelszó: 1) munka vállalóként van regisztrálva.
-    A második (felhnév.: 2 jelszó: 2) munkaadóként, hozzátartozik az utolsó két munka.
-    A harmadik (felhnév.: 3 jelszó: 3) is munkaadó, hozzá tartozik az első munka.
-        Természetesen a felhasználó maga is létrehozhat új felhasználókat.
-        Fejlesztői környezetben a "munkaado.tes.js" tesztelte új munkaadó és munkavállaló
-    felvételét. A "zombi.test.js" pedig a honlap felépítését ellenőrizte. Ezekhez a "moccha",
-    "zombie" és "chai" modulok nyújtottak segítséget.
-    
-
