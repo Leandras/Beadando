@@ -5,7 +5,8 @@
 <h5>Nemptun: AGY276</h5>
 <h5>email: levaiandrass@gmail.com</h5>
 
-#### __1.__  __Követelmény__ __analízis__
+#### __Követelmény__ __analízis__
+    ###### Funkciók és elvárások
         Alkalmazások fejlesztése órára egy olyan programot kellett készíteni mely a node js-t 
     felhasználva képes adatokat tárolni, új adatokat felvinni, meglévőket szerkeszteni 
     vagy törölni azokat. 
@@ -13,9 +14,10 @@
     csak akkor haszánlhatja  programot/léphet be az oldalra, ha adatai megfelelnek
     és szerepel az adatbázisban.
 
-#### __2.__  __Használatieset-modell__
+    ###### Használatieset-modell
         i. Szerepkörök : Két fajta felhasználó a munkaadó és a munkaválalló, szerepkörüket
     tekintve a munkavállaló jobban lekorlátozott az alkalmazás funkciójaival szemben.
+    
         ii. Használati útmutató a két felhasználó modellhez:  Az alkalmazásban két fajta
     felhasználó elérhető, a munkaadó és a munkavállaló.
     A munkaválallók lehetőségei korlátozzok, nekik csak meghirdetett munkák megtekin-
@@ -24,6 +26,7 @@
     fogadhatja, ha egy munkavállaló jelentkezett a munkára. Ennél a modellnél mindösz-
     sze annyi megkötés van, hogy nem fogadhat el munkát valamint más munkaadó feladott
     munkáját értelem szerűen nem szerkesztheti/törölheti.
+    
         iii. Folyamat diagramm és a Munkavállaló modell kifejtése.
     A bejelnetkezés oldalra érkezve eldönthetjük milyen típusú felhasználót szeretnénk 
     regisztrálni. Jelen esetben vegyük a munkavállalót, hiszen ő kevésbé lekorlátozott
