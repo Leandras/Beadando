@@ -5,8 +5,9 @@
 <h5>Nemptun: AGY276</h5>
 <h5>email: levaiandrass@gmail.com</h5>
 
-#### __Követelmény__ __analízis__
-######  Funkciók és elvárások
+### __Követelmény__ __analízis__
+
+###### 1. Funkciók és elvárások
         Alkalmazások fejlesztése órára egy olyan programot kellett készíteni mely a node js-t 
     felhasználva képes adatokat tárolni, új adatokat felvinni, meglévőket szerkeszteni 
     vagy törölni azokat. 
@@ -14,7 +15,7 @@
     csak akkor haszánlhatja  programot/léphet be az oldalra, ha adatai megfelelnek
     és szerepel az adatbázisban.
 
-###### Használatieset-modell
+###### 2. Használatieset-modell
         i. Szerepkörök : Két fajta felhasználó a munkaadó és a munkaválalló, szerepkörüket
     tekintve a munkavállaló jobban lekorlátozott az alkalmazás funkciójaival szemben.
     
@@ -49,14 +50,45 @@
     betöltötté válik.
     
      ![Felhasználók](docs/images/users.png)
+
+### __3.__ __Tervezés__
+
+##### 1.Architektúra terv
+    i. Oldaltérkép
+            Publikus:
+                - Főoldal
+                - Regisztráció
+                -Bejelentkezés
+            Munkaválalló
+                -Főoldal
+                -Bejelentkezés/Kijlentkezés
+                -Munkalista
+                -Munka elfogadása
+            Munkaadó
+                -Főoldal
+                -Bejelentkezés/Kijlentkezés
+                -Új munka felvételez
+                -Felvett munka szerkesztése
+                -Felvett munka törlése
+                -Munkaadó jelentkezésének elfogadása
+                
+    ii. Végpontok
+            * POST /: Főoldal
+            * GET /signup: Átirányítás munkaadó regisztrációs oldalra
+            * POST /signup: Munkaadó regisztráció ellenőrzés és mentése
+            * GET /signupemp: Átirányítás munkavállaló regisztrációs oldalra
+            * POST /signupemp: Munkavállaló regisztrácó ellenőrzése és mentése
+            * GET /munkalista: Munkák listájának a megjelenítése
+            * POST /munkalista: Kiemelt munka szerkesztési oldalára irányít át
+            * POST /elfogad: Munkavállaló regisztrálása egy betöltetnen munkáhozz
+            * POST /torol: Kijelölt munka törlése
+            * GET /felvesz: Új munka felvételéne az oldalára átirányítás
+            * POST /felvesz: Új munka felvétele és adatok ellenőrzése
+            * GET /szerkeszt: Munka szerkesztési oldalának a megjelenítése
+            * POST /szerkeszt: Szerkesztett munka mentése
+            * GET /delete: Munka törlése
+            * GET /jovahagy: Munkavállaló jelentkezésének elfogadása
         
-<h6>2.  A feladat implementálása</h6>
-        Egy munkakereső oldalt hoztam létre, melyet használhatunk munkavállaló és munkaadóként. 
-    Mint munkaadók, képesek vagyunk új munkákat regisztrálni, a meglévőket módosítani vagy 
-    törölni azokat.
-        Mind munkavállalók, böngészehtünk a posztolt munkák között és elfogadhatjuk azokat,
-        majd ha a munkavállaló is jóváhagyta, be is tölthetjük a kínált pozíciót.
-    
 <h6>3. Használati útmutató</h6>
         Mikor először megnyitjuk az oldalt, a főoldal fogad. Itt a jobb felső sarokan 
     kattinthatunk a bejelentkezésre, ami átírányít minket a következő oldalra.
